@@ -1,27 +1,27 @@
 import 'package:flutter/foundation.dart';
 
 @immutable
-class ProductCategory {
+class ProductCategoryEntity {
   final int? id;
   final String name;
   final String? imageUrl;
   final bool isActive;
 
-  const ProductCategory({
+  const ProductCategoryEntity({
     this.id,
     required this.name,
     this.imageUrl,
     this.isActive = true,
   }) : assert(name != '', 'Product category name cannot be empty');
 
-  /// Creates a copy of this [ProductCategory] with updated fields.
-  ProductCategory copyWith({
+  /// Creates a copy of this [ProductCategoryEntity] with updated fields.
+  ProductCategoryEntity copyWith({
     int? id,
     String? name,
     String? imageUrl,
     bool? isActive,
   }) {
-    return ProductCategory(
+    return ProductCategoryEntity(
       id: id ?? this.id,
       name: name ?? this.name,
       imageUrl: imageUrl ?? this.imageUrl,
@@ -33,7 +33,7 @@ class ProductCategory {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is ProductCategory &&
+    return other is ProductCategoryEntity &&
         other.id == id &&
         other.name == name &&
         other.imageUrl == imageUrl &&
