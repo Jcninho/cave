@@ -8,6 +8,9 @@ abstract interface class ProductRepository {
 
   Stream<List<ProductCategoryEntity>> watchActive();
 
+  Future<Result<List<ProductCategoryEntity>, Failure>> getAll();
+  Future<Result<List<ProductCategoryEntity>, Failure>> getActive();
+
   Future<Result<ProductCategoryEntity?, Failure>> getById(int id);
 
   Future<Result<ProductCategoryEntity, Failure>> create(
@@ -18,7 +21,7 @@ abstract interface class ProductRepository {
       ProductCategoryEntity category,
       );
 
-  Future<Result<void, Failure>> delete(int id);
+  Future<Result<void, Failure>> deleteById(int id);
 
   Future<Result<void, Failure>> deactivate(int id);
 
