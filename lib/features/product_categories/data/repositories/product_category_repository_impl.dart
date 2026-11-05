@@ -1,4 +1,3 @@
-import 'package:cave/core/database/app_database.dart';
 import 'package:cave/core/errors/failures.dart';
 import 'package:cave/core/errors/result.dart';
 import 'package:cave/core/utils/map_stream_list.dart';
@@ -9,7 +8,7 @@ import 'package:cave/features/product_categories/domain/entities/product_categor
 import 'package:cave/features/product_categories/domain/repositories/product_category_repository.dart';
 import 'package:drift/drift.dart';
 
-class ProductCategoryRepositoryImpl implements ProductRepository {
+class ProductCategoryRepositoryImpl implements ProductCategoryRepository {
   final ProductCategoryDao _dao;
 
   ProductCategoryRepositoryImpl(this._dao);

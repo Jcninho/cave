@@ -3,7 +3,7 @@ import 'package:cave/core/errors/failures.dart';
 import 'package:cave/core/errors/result.dart';
 import 'package:cave/features/product_categories/domain/entities/product_category_entity.dart';
 
-abstract interface class ProductRepository {
+abstract interface class ProductCategoryRepository {
   Stream<List<ProductCategoryEntity>> watchAll();
 
   Stream<List<ProductCategoryEntity>> watchActive();
