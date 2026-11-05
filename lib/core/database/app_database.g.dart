@@ -3,12 +3,12 @@
 part of 'app_database.dart';
 
 // ignore_for_file: type=lint
-class $ProductCategoriesTableTable extends ProductCategoriesTable
-    with TableInfo<$ProductCategoriesTableTable, ProductCategoryRow> {
+class $ProductCategoriesTable extends ProductCategories
+    with TableInfo<$ProductCategoriesTable, ProductCategoryRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ProductCategoriesTableTable(this.attachedDatabase, [this._alias]);
+  $ProductCategoriesTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
@@ -63,7 +63,7 @@ class $ProductCategoriesTableTable extends ProductCategoriesTable
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'product_categories_table';
+  static const String $name = 'product_categories';
   @override
   VerificationContext validateIntegrity(
     Insertable<ProductCategoryRow> instance, {
@@ -123,8 +123,8 @@ class $ProductCategoriesTableTable extends ProductCategoriesTable
   }
 
   @override
-  $ProductCategoriesTableTable createAlias(String alias) {
-    return $ProductCategoriesTableTable(attachedDatabase, alias);
+  $ProductCategoriesTable createAlias(String alias) {
+    return $ProductCategoriesTable(attachedDatabase, alias);
   }
 }
 
@@ -152,8 +152,8 @@ class ProductCategoryRow extends DataClass
     return map;
   }
 
-  ProductCategoriesTableCompanion toCompanion(bool nullToAbsent) {
-    return ProductCategoriesTableCompanion(
+  ProductCategoriesCompanion toCompanion(bool nullToAbsent) {
+    return ProductCategoriesCompanion(
       id: Value(id),
       name: Value(name),
       imageUrl: imageUrl == null && nullToAbsent
@@ -197,7 +197,7 @@ class ProductCategoryRow extends DataClass
     imageUrl: imageUrl.present ? imageUrl.value : this.imageUrl,
     isActive: isActive ?? this.isActive,
   );
-  ProductCategoryRow copyWithCompanion(ProductCategoriesTableCompanion data) {
+  ProductCategoryRow copyWithCompanion(ProductCategoriesCompanion data) {
     return ProductCategoryRow(
       id: data.id.present ? data.id.value : this.id,
       name: data.name.present ? data.name.value : this.name,
@@ -229,19 +229,18 @@ class ProductCategoryRow extends DataClass
           other.isActive == this.isActive);
 }
 
-class ProductCategoriesTableCompanion
-    extends UpdateCompanion<ProductCategoryRow> {
+class ProductCategoriesCompanion extends UpdateCompanion<ProductCategoryRow> {
   final Value<int> id;
   final Value<String> name;
   final Value<String?> imageUrl;
   final Value<bool> isActive;
-  const ProductCategoriesTableCompanion({
+  const ProductCategoriesCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
     this.imageUrl = const Value.absent(),
     this.isActive = const Value.absent(),
   });
-  ProductCategoriesTableCompanion.insert({
+  ProductCategoriesCompanion.insert({
     this.id = const Value.absent(),
     required String name,
     this.imageUrl = const Value.absent(),
@@ -261,13 +260,13 @@ class ProductCategoriesTableCompanion
     });
   }
 
-  ProductCategoriesTableCompanion copyWith({
+  ProductCategoriesCompanion copyWith({
     Value<int>? id,
     Value<String>? name,
     Value<String?>? imageUrl,
     Value<bool>? isActive,
   }) {
-    return ProductCategoriesTableCompanion(
+    return ProductCategoriesCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
       imageUrl: imageUrl ?? this.imageUrl,
@@ -295,7 +294,7 @@ class ProductCategoriesTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ProductCategoriesTableCompanion(')
+    return (StringBuffer('ProductCategoriesCompanion(')
           ..write('id: $id, ')
           ..write('name: $name, ')
           ..write('imageUrl: $imageUrl, ')
@@ -308,33 +307,33 @@ class ProductCategoriesTableCompanion
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
-  late final $ProductCategoriesTableTable productCategoriesTable =
-      $ProductCategoriesTableTable(this);
+  late final $ProductCategoriesTable productCategories =
+      $ProductCategoriesTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities => [productCategoriesTable];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [productCategories];
 }
 
-typedef $$ProductCategoriesTableTableCreateCompanionBuilder =
-    ProductCategoriesTableCompanion Function({
+typedef $$ProductCategoriesTableCreateCompanionBuilder =
+    ProductCategoriesCompanion Function({
       Value<int> id,
       required String name,
       Value<String?> imageUrl,
       Value<bool> isActive,
     });
-typedef $$ProductCategoriesTableTableUpdateCompanionBuilder =
-    ProductCategoriesTableCompanion Function({
+typedef $$ProductCategoriesTableUpdateCompanionBuilder =
+    ProductCategoriesCompanion Function({
       Value<int> id,
       Value<String> name,
       Value<String?> imageUrl,
       Value<bool> isActive,
     });
 
-class $$ProductCategoriesTableTableFilterComposer
-    extends Composer<_$AppDatabase, $ProductCategoriesTableTable> {
-  $$ProductCategoriesTableTableFilterComposer({
+class $$ProductCategoriesTableFilterComposer
+    extends Composer<_$AppDatabase, $ProductCategoriesTable> {
+  $$ProductCategoriesTableFilterComposer({
     required super.$db,
     required super.$table,
     super.joinBuilder,
@@ -362,9 +361,9 @@ class $$ProductCategoriesTableTableFilterComposer
   );
 }
 
-class $$ProductCategoriesTableTableOrderingComposer
-    extends Composer<_$AppDatabase, $ProductCategoriesTableTable> {
-  $$ProductCategoriesTableTableOrderingComposer({
+class $$ProductCategoriesTableOrderingComposer
+    extends Composer<_$AppDatabase, $ProductCategoriesTable> {
+  $$ProductCategoriesTableOrderingComposer({
     required super.$db,
     required super.$table,
     super.joinBuilder,
@@ -392,9 +391,9 @@ class $$ProductCategoriesTableTableOrderingComposer
   );
 }
 
-class $$ProductCategoriesTableTableAnnotationComposer
-    extends Composer<_$AppDatabase, $ProductCategoriesTableTable> {
-  $$ProductCategoriesTableTableAnnotationComposer({
+class $$ProductCategoriesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ProductCategoriesTable> {
+  $$ProductCategoriesTableAnnotationComposer({
     required super.$db,
     required super.$table,
     super.joinBuilder,
@@ -414,47 +413,41 @@ class $$ProductCategoriesTableTableAnnotationComposer
       $composableBuilder(column: $table.isActive, builder: (column) => column);
 }
 
-class $$ProductCategoriesTableTableTableManager
+class $$ProductCategoriesTableTableManager
     extends
         RootTableManager<
           _$AppDatabase,
-          $ProductCategoriesTableTable,
+          $ProductCategoriesTable,
           ProductCategoryRow,
-          $$ProductCategoriesTableTableFilterComposer,
-          $$ProductCategoriesTableTableOrderingComposer,
-          $$ProductCategoriesTableTableAnnotationComposer,
-          $$ProductCategoriesTableTableCreateCompanionBuilder,
-          $$ProductCategoriesTableTableUpdateCompanionBuilder,
+          $$ProductCategoriesTableFilterComposer,
+          $$ProductCategoriesTableOrderingComposer,
+          $$ProductCategoriesTableAnnotationComposer,
+          $$ProductCategoriesTableCreateCompanionBuilder,
+          $$ProductCategoriesTableUpdateCompanionBuilder,
           (
             ProductCategoryRow,
             BaseReferences<
               _$AppDatabase,
-              $ProductCategoriesTableTable,
+              $ProductCategoriesTable,
               ProductCategoryRow
             >,
           ),
           ProductCategoryRow,
           PrefetchHooks Function()
         > {
-  $$ProductCategoriesTableTableTableManager(
+  $$ProductCategoriesTableTableManager(
     _$AppDatabase db,
-    $ProductCategoriesTableTable table,
+    $ProductCategoriesTable table,
   ) : super(
         TableManagerState(
           db: db,
           table: table,
           createFilteringComposer: () =>
-              $$ProductCategoriesTableTableFilterComposer(
-                $db: db,
-                $table: table,
-              ),
+              $$ProductCategoriesTableFilterComposer($db: db, $table: table),
           createOrderingComposer: () =>
-              $$ProductCategoriesTableTableOrderingComposer(
-                $db: db,
-                $table: table,
-              ),
+              $$ProductCategoriesTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer: () =>
-              $$ProductCategoriesTableTableAnnotationComposer(
+              $$ProductCategoriesTableAnnotationComposer(
                 $db: db,
                 $table: table,
               ),
@@ -464,7 +457,7 @@ class $$ProductCategoriesTableTableTableManager
                 Value<String> name = const Value.absent(),
                 Value<String?> imageUrl = const Value.absent(),
                 Value<bool> isActive = const Value.absent(),
-              }) => ProductCategoriesTableCompanion(
+              }) => ProductCategoriesCompanion(
                 id: id,
                 name: name,
                 imageUrl: imageUrl,
@@ -476,7 +469,7 @@ class $$ProductCategoriesTableTableTableManager
                 required String name,
                 Value<String?> imageUrl = const Value.absent(),
                 Value<bool> isActive = const Value.absent(),
-              }) => ProductCategoriesTableCompanion.insert(
+              }) => ProductCategoriesCompanion.insert(
                 id: id,
                 name: name,
                 imageUrl: imageUrl,
@@ -485,12 +478,12 @@ class $$ProductCategoriesTableTableTableManager
           withReferenceMapper: (p0) => p0
               .map(
                 (e) => (
-                  e.readTable<$ProductCategoriesTableTable, ProductCategoryRow>(
+                  e.readTable<$ProductCategoriesTable, ProductCategoryRow>(
                     table,
                   ),
                   BaseReferences<
                     _$AppDatabase,
-                    $ProductCategoriesTableTable,
+                    $ProductCategoriesTable,
                     ProductCategoryRow
                   >(db, table, e),
                 ),
@@ -501,21 +494,21 @@ class $$ProductCategoriesTableTableTableManager
       );
 }
 
-typedef $$ProductCategoriesTableTableProcessedTableManager =
+typedef $$ProductCategoriesTableProcessedTableManager =
     ProcessedTableManager<
       _$AppDatabase,
-      $ProductCategoriesTableTable,
+      $ProductCategoriesTable,
       ProductCategoryRow,
-      $$ProductCategoriesTableTableFilterComposer,
-      $$ProductCategoriesTableTableOrderingComposer,
-      $$ProductCategoriesTableTableAnnotationComposer,
-      $$ProductCategoriesTableTableCreateCompanionBuilder,
-      $$ProductCategoriesTableTableUpdateCompanionBuilder,
+      $$ProductCategoriesTableFilterComposer,
+      $$ProductCategoriesTableOrderingComposer,
+      $$ProductCategoriesTableAnnotationComposer,
+      $$ProductCategoriesTableCreateCompanionBuilder,
+      $$ProductCategoriesTableUpdateCompanionBuilder,
       (
         ProductCategoryRow,
         BaseReferences<
           _$AppDatabase,
-          $ProductCategoriesTableTable,
+          $ProductCategoriesTable,
           ProductCategoryRow
         >,
       ),
@@ -526,9 +519,6 @@ typedef $$ProductCategoriesTableTableProcessedTableManager =
 class $AppDatabaseManager {
   final _$AppDatabase _db;
   $AppDatabaseManager(this._db);
-  $$ProductCategoriesTableTableTableManager get productCategoriesTable =>
-      $$ProductCategoriesTableTableTableManager(
-        _db,
-        _db.productCategoriesTable,
-      );
+  $$ProductCategoriesTableTableManager get productCategories =>
+      $$ProductCategoriesTableTableManager(_db, _db.productCategories);
 }

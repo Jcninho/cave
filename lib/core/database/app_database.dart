@@ -9,7 +9,7 @@ import 'package:drift/drift.dart';
 
 part 'app_database.g.dart';
 
-@DriftDatabase(tables: [ProductCategoriesTable], daos: [])
+@DriftDatabase(tables: [ProductCategories], daos: [])
 class AppDatabase  extends _$AppDatabase {
   AppDatabase(): super(_openConnection());
 

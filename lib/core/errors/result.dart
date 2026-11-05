@@ -1,24 +1,23 @@
-
 sealed class Result<T, E> {
   const Result();
 
-  factory Result.left(T value) = Left<T, E>;
-  factory Result.right(E error) = Right<T, E>;
+  factory Result.success(T value) = Success<T, E>;
+  factory Result.failure(E error) = Error<T, E>;
 
-  bool get isLeft => this is Left<T, E>;
-  bool get isRight => this is Right<T, E>;
+  bool get isSuccess => this is Success<T, E>;
+  bool get isFailure => this is Error<T, E>;
 
-  T get left => (this as Left<T, E>).value;
+  T get success => (this as Success<T, E>).value;
 
-  E get right => (this as Right<T, E>).error;
+  E get failure => (this as Error<T, E>).error;
 }
 
-final class Left<T, E> extends Result<T, E> {
+final class Success<T, E> extends Result<T, E> {
   final T value;
-  const Left(this.value);
+  const Success(this.value);
 }
 
-final class Right<T, E> extends Result<T, E> {
+final class Error<T, E> extends Result<T, E> {
   final E error;
-  const Right(this.error);
+  const Error(this.error);
 }
