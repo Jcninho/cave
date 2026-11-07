@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cave/core/database/tables/tables.dart';
+import 'package:cave/features/product/data/datasources/product_dao.dart';
 import 'package:cave/features/product_categories/data/datasources/product_category_dao.dart';
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
@@ -10,8 +11,8 @@ import 'package:path_provider/path_provider.dart';
 part 'app_database.g.dart';
 
 @DriftDatabase(
-  tables: [ProductCategories, Products],
-  daos: [ProductCategoryDao],
+  tables: [ProductCategories, Products, ProductUnits],
+  daos: [ProductCategoryDao, ProductDao],
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase([QueryExecutor? executor]) : super(executor ?? _openConnection());
