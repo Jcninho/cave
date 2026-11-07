@@ -50,19 +50,19 @@ class ProductDao extends DatabaseAccessor<AppDatabase> with _$ProductDaoMixin {
   }
 
   /// Inserts a new product category and returns the generated row ID.
-  Future<int> insertCategory(ProductsCompanion category) {
+  Future<int> insertProduct(ProductsCompanion category) {
     return into(products).insert(category);
   }
 
   /// Updates an existing category by ID.
-  Future<int> updateCategory(int id, ProductsCompanion category) {
+  Future<int> updateProduct(int id, ProductsCompanion category) {
     return (update(products)..where((c) => c.id.equals(id)))
         .write(category);
   }
 
   /// Updates the active status of a category by ID.
   Future<int> setActiveStatus(int id, bool isActive) {
-    return updateCategory(
+    return updateProduct(
       id,
       ProductsCompanion(isActive: Value(isActive)),
     );
